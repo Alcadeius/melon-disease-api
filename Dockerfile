@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY . /app
 WORKDIR /app
-
+RUN apt-get update && apt-get install -y libgl1
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
