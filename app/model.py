@@ -1,7 +1,11 @@
 from ultralytics import YOLO
 from PIL import Image
 import io
+import os
 
+model_path = "models/best.pt"
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found: {model_path}")
 model = YOLO("models/best.pt")
 
 

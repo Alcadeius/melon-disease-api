@@ -4,4 +4,4 @@ gunicorn
 python-multipart
 ultralytics
 pillow
-opencv-python-headless
+opencv-python-headless==4.11.0.86
