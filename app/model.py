@@ -22,7 +22,6 @@ def predict_image(file_bytes: bytes):
 
     predictions = {v: 0 for v in category_mapping.values()}
 
-    # Menentukan prediksi berdasarkan hasil deteksi
     for result in results:
         for box in result.boxes:
             class_id = int(box.cls[0])
@@ -32,11 +31,9 @@ def predict_image(file_bytes: bytes):
 
     total = sum(predictions.values())
 
-    # Jika total prediksi 0, maka kembalikan nilai 0 untuk semua kategori
     if total == 0:
         return {label: 0 for label in predictions}
 
-    # Menormalisasi prediksi untuk setiap kategori sehingga totalnya 100%
     normalized_predictions = {
         label: round((conf / total) * 100, 2) for label, conf in predictions.items()
     }

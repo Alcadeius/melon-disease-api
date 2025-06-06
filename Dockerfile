@@ -1,6 +1,5 @@
 FROM python:3.10-slim
 
-# Install dependencies including libGL untuk OpenCV
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
@@ -9,11 +8,11 @@ RUN apt-get update && apt-get install -y \
     libxrender1 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
 WORKDIR /app
-RUN apt-get update && apt-get install -y libgl1
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+COPY . .
 
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
