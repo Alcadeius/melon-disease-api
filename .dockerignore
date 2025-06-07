@@ -1,3 +1,15 @@
 .venv
 __pycache__
 *.pyc
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+*.log
+*.sqlite3
+.git/
+.gitignore
+tests/
+notebooks/
